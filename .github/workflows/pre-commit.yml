@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -20,9 +22,13 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           extra_args: --verbose --show-diff-on-failure --from-ref origin/${{ github.base_ref }} --to-ref HEAD
+        env:
+          PRE_COMMIT_COLOR: always
 
         # Run pre-commit hooks on push events on all files
       - uses: pre-commit/action@v3.0.1
         if: github.event_name == 'push'
         with:
           extra_args: --verbose --show-diff-on-failure --all-files
+        env:
+          PRE_COMMIT_COLOR: always
