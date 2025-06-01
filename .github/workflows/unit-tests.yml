@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies using uv
         run: |
           uv pip install -r pyproject.toml --system
-          uv pip install -r pyproject.toml --system --dev
+          uv pip install -r pyproject.toml --system --group dev
 
       - name: Run Unit Tests
         run: pytest tests/unit
