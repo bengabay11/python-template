@@ -8,5 +8,14 @@
 	"python.testing.unittestEnabled": false,
 	"python.testing.pytestEnabled": true,
 	"files.eol": "\n",
-	"cSpell.words": ["pytest", "testpaths"]
+	"cSpell.words": [
+		"absolufy",
+		"codespell",
+		"colorlog",
+		"mypy",
+		"pyproject",
+		"pytest",
+		"testpaths",
+		"venv"
+	]
 }
