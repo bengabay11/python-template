@@ -25,7 +25,6 @@ jobs:
         env:
           PRE_COMMIT_COLOR: always
 
-        # Run pre-commit hooks on push events on all files
       - uses: pre-commit/action@v3.0.1
         if: github.event_name == 'push'
         with:

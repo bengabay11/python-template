@@ -19,8 +19,10 @@ repos:
       - id: check-vcs-permalinks
       - id: check-ast
       - id: check-added-large-files
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
       - id: no-commit-to-branch
-        args: ["--branch", "master", "--branch", "main"]
+        args: ["--branch", "main"]
 
   # Verifies that .json files in a repository are valid JSON5.
   # The JSON5 format is similar to JSON, but it permits comments, trailing commas, and more.
