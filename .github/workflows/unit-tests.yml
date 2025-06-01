@@ -25,5 +25,5 @@ jobs:
           uv pip install -r pyproject.toml --system
           uv pip install -r pyproject.toml --system --group dev
 
-      - name: Run Unit Tests
+      - name: Run unit tests
         run: pytest tests/unit
