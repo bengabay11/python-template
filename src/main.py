@@ -1,5 +1,9 @@
 import asyncio
 
+from logger import setup_logger
+
+logger = setup_logger(__name__)
+
 
 def add(first_num: int, second_num: int) -> int:
     return first_num + second_num

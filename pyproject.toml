@@ -4,11 +4,14 @@ version = "0.1.0"
 description = "A boilerplate template to kickstart new Python projects."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "colorlog>=6.9.0",
+]
 
 [dependency-groups]
 dev = [
     "absolufy-imports>=0.3.1",
+    "bandit>=1.8.3",
     "codespell>=2.4.1",
     "mypy>=1.16.0",
     "pre-commit>=4.2.0",

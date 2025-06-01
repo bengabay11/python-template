@@ -64,3 +64,9 @@ repos:
     rev: v0.3.1
     hooks:
       - id: absolufy-imports
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.5
+    hooks:
+      - id: python-bandit-vulnerability-check
+        args: [--quiet, --skip, "B101", --recursive, src]
