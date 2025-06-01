@@ -1,0 +1,21 @@
+lint.select = [
+    'F',      # pyflakes
+    'E',      # pycodestyle
+    "A",      # prevent using keywords that clobber python builtins
+    'I',      # isort
+    'D',      # pydocstyle
+    'UP',     # pyupgrade
+    'RUF',    # the ruff developer's own rules
+]
+lint.ignore = [
+    "D100",  # Missing docstring in public module
+    "D103",  # Missing docstring in public function
+    "D203",  # incorrect-blank-line-before-class
+    "D211",  # no-blank-line-before-class
+    "D212",  # multi-line-summary-first-line
+    "D213",  # multi-line-summary-second-line
+    "E501",  # Suppress line-too-long warnings: trust black's judgement on this one.
+    "A003",  # Allow shawoding class attribute: django uses id.
+    "B904",  # Allow unchained exceptions: it's fine to raise 404 in django.
+]
+line-length = 100

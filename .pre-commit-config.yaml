@@ -21,6 +21,7 @@ repos:
       - id: check-added-large-files
       - id: no-commit-to-branch
         args: ["--branch", "master", "--branch", "main"]
+
   # Verifies that .json files in a repository are valid JSON5.
   # The JSON5 format is similar to JSON, but it permits comments, trailing commas, and more.
   # This hook is a drop-in replacement for the check-json
@@ -30,19 +31,34 @@ repos:
     hooks:
       - id: check-json5
 
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.7.9
+    hooks:
+      - id: uv-lock
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.12
     hooks:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
     hooks:
       - id: codespell
         args: ["--write-changes"]
+
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.16.0
     hooks:
       - id: mypy
         additional_dependencies: [tokenize-rt==3.2.0]
+
+  # Although Ruff detects relative imports via TID252, it does not auto-fix them yet.
+  # We use absolufy-imports, until Ruff supports this feature.
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+      - id: absolufy-imports
