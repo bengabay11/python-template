@@ -31,9 +31,15 @@ This project provides a robust boilerplate to kickstart new Python projects with
    uv pip install -r pyproject.tomlpyproject.toml
    ```
 
-3. Start developing your Python project in the `src/` directory.
+3. Install the pre-commit hooks:
 
-4. Run the example script:
+   ```sh
+   pre-commit install
+   ```
+
+4. Start developing your Python project in the `src/` directory.
+
+5. Run the example script:
 
    ```sh
    cd src
