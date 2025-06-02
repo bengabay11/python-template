@@ -1,4 +1,5 @@
 import logging
+from typing import TextIO
 
 import colorlog
 
@@ -11,7 +12,7 @@ LOG_COLORS = {
 }
 
 
-def create_colored_stream_handler() -> colorlog.StreamHandler:
+def create_colored_stream_handler() -> colorlog.StreamHandler[TextIO]:
     handler = colorlog.StreamHandler()
     formatter = colorlog.ColoredFormatter(
         "%(bold_black)s%(asctime)s%(reset)s "
@@ -32,7 +33,8 @@ def add_logger_handlers(logger: logging.Logger) -> None:
     ]
     for handler in handlers:
         if not isinstance(handler, logging.Handler):
-            raise TypeError(f"Expected logging.Handler, got {type(handler).__name__}")
+            error_message = f"Expected logging.Handler, got {type(handler).__name__}"
+            raise TypeError(error_message)
         logger.addHandler(handler)
 
 

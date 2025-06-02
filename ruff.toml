@@ -1,11 +1,27 @@
 lint.select = [
+    # Default rules
     'F',      # pyflakes
-    'E',      # pycodestyle
-    "A",      # prevent using keywords that clobber python builtins
-    'I',      # isort
-    'D',      # pydocstyle
-    'UP',     # pyupgrade
+    'E',      # pycodestyle (check Python code against some of the style conventions in PEP 8)
+    # More basic rules
+    "A",      # flake8-builtins (prevent using keywords that clobber python builtins)
+    'I',      # isort (sort imports alphabetically and automatically separate into sections and by type)
+    'UP',     # pyupgrade (upgrade syntax for newer versions of the language)
+
+    'ERA',    # eradicate (removes commented-out code)
+    'TRY',    # TRY (prevent exception handling anti-patterns)
+    'D',      # pydocstyle (checking compliance with Python docstring conventions)
     'RUF',    # the ruff developer's own rules
+    'SIM',    # flake8-simplify
+    'ARG',    # flake8-arguments (checks for unused function arguments)
+    'PT',     # flake8-pytest-style (checking common style issues or inconsistencies with pytest-based tests)
+    'C4',     # flake8-comprehensions (helps write better list/set/dict comprehensions)
+    'B',      # flake8-bugbear (find likely bugs and design problems)
+    'EM',     # flake8-errmsg (helps format nice error messages)
+    'LOG',    # flake8-logging (checks for issues using the standard library logging module)
+    'PIE',    # flake8-pie (implements misc. lints)
+    'Q',      # flake8-quotes (checks for consistent use of quotes)
+    'RSE',    # flake8-raise (finds improvements for raise statements)
+    'N',      # flake8-naming (enforce naming conventions)
 ]
 lint.ignore = [
     "D100",  # Missing docstring in public module

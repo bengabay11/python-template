@@ -12,9 +12,15 @@
 		"absolufy",
 		"codespell",
 		"colorlog",
+		"errmsg",
+		"isort",
 		"mypy",
+		"pycodestyle",
+		"pydocstyle",
+		"pyflakes",
 		"pyproject",
 		"pytest",
+		"pyupgrade",
 		"testpaths",
 		"venv"
 	]

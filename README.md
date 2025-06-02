@@ -13,7 +13,7 @@ We've bundled the following to get you up and running quickly:
 - **✨ Blazing-Fast Linting & Formatting:** Leverages [ruff](https://docs.astral.sh/ruff/) for an all-in-one, high-performance linter, code formatter, and more.
 - **🚫 Automated Quality Checks:** Integrates [pre-commit](https://pre-commit.com/) hooks for `ruff`, `mypy`, `codespell`, `absolufy-imports`, `uv lock`, and other essential checks, ensuring code consistency before commits.
 - **💻 VS Code Integration:** Includes `.vscode/` settings for streamlined development, with editor configurations and debug settings right out of the box.
-- **🤖 GitHub Actions Workflow:** Provides `.github/` workflows for automated `pre-commit` checks, unit, and integration testing.
+- **🤖 GitHub Actions Workflow:** Provides `.github/` workflows for automated `pre-commit` checks, unit, and integration testing (on windows/linux/mac).
 - **🔗 Git Attributes:** Standardizes `.gitattributes` for consistent line endings, optimized diffs, and common Git configurations tailored for Python projects.
 - **📁 Structured Source Directory:** A clear `src/` directory where your application code resides, complete with an example `main.py` to get you started.
 - **🌈 Enhanced Terminal Logging:** Configured with [colorlog](https://pypi.org/project/colorlog/) to provide highly readable, colored log output directly in your terminal, making debugging a breeze.
