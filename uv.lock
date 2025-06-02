@@ -364,6 +364,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "colorlog" },
+    { name = "pydantic" },
     { name = "pydantic-settings" },
 ]
 
@@ -383,6 +384,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "colorlog", specifier = ">=6.9.0" },
+    { name = "pydantic", specifier = ">=2.11.5" },
     { name = "pydantic-settings", specifier = ">=2.9.1" },
 ]
 

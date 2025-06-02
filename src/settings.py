@@ -1,15 +1,38 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
+
+from pydantic import BaseModel
+from pydantic_settings import (
+    BaseSettings,
+    PydanticBaseSettingsSource,
+    SettingsConfigDict,
+    TomlConfigSettingsSource,
+)
 
 
-class LoggingSettings(BaseSettings):
+def find_first_toml(search_dir: Path, patterns: list[str] | None = None) -> Path:
+    """
+    Search for `toml` files in the given directory (optionally with `patterns`).
+
+    Returns the path of the first one found. Raises `FileNotFoundError` if none found.
+    """
+    if patterns is None:
+        patterns = ["*.toml"]
+    for pattern in patterns:
+        for toml_path in search_dir.glob(pattern):
+            if toml_path.is_file():
+                return toml_path
+    msg = f"No TOML file found in {search_dir} matching {patterns}"
+    raise FileNotFoundError(msg)
+
+
+class LoggingSettings(BaseModel):
     """Logging-related settings."""
 
     min_log_level: str = "INFO"
-    use_file_handlers: bool = False
-    log_file: str | None = None
+    log_file_path: Path | None = None
 
 
-class AppCoreSettings(BaseSettings):
+class AppCoreSettings(BaseModel):
     """Core application settings."""
 
     app_name: str = "Python Template"
@@ -18,10 +41,17 @@ class AppCoreSettings(BaseSettings):
 
 
 class AppSettings(BaseSettings):
-    """
-    Application settings loaded from environment and `ini` file.
+    """Application settings loaded from environment, `toml` file, and class initialization.
 
-    `.env` file takes precedence over `ini`.
+    Settings are loaded in the following order of precedence
+    (as defined in `settings_customise_sources`):
+    1. Initialization arguments (init settings)
+    2. `toml` configuration file
+    3. Environment variables (including `.env` file)
+
+    NOTE: For deeply nested environment variables, use the `{SECTION}__{PROPERTY}`
+    naming convention (e.g., `CORE__APP_NAME`).
+    The delimiter defined in `model_config.env_nested_delimiter`
     """
 
     core: AppCoreSettings = AppCoreSettings()
@@ -34,8 +64,20 @@ class AppSettings(BaseSettings):
         # Properties should be named as `{SECTION}__{PROPERTY}` in `.env`.
         # For example: `CORE__APP_NAME`.
         env_nested_delimiter="__",
-        toml_file="../config/config.toml",
+        toml_file=find_first_toml(Path(__file__).parent.parent / "config"),
     )
+
+    @classmethod
+    def settings_customise_sources(
+        cls,
+        settings_cls: type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,  # noqa: ARG003
+        file_secret_settings: PydanticBaseSettingsSource,  # noqa: ARG003
+    ) -> tuple[PydanticBaseSettingsSource, ...]:
+        # Customize the order of settings sources.(init > toml > env)
+        return (init_settings, TomlConfigSettingsSource(settings_cls), env_settings)
 
 
 settings = AppSettings()

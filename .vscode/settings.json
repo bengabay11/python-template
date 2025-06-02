@@ -3,6 +3,7 @@
 	"[python]": {
 		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
+	"ruff.configuration": "ruff.toml",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"python.testing.pytestArgs": ["tests"],
 	"python.testing.unittestEnabled": false,
@@ -12,8 +13,11 @@
 		"absolufy",
 		"codespell",
 		"colorlog",
+		"customise",
+		"dotenv",
 		"errmsg",
 		"isort",
+		"levelname",
 		"mypy",
 		"pycodestyle",
 		"pydocstyle",
