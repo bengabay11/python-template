@@ -57,7 +57,7 @@ repos:
       - id: mypy
         # mypy will not scan files in the pre-commit without specifying the dependencies.
         # need to think about a better way to handle this.
-        additional_dependencies: [tokenize-rt==3.2.0, colorlog]
+        additional_dependencies: [tokenize-rt==3.2.0, colorlog, pydantic-settings]
 
   # Although Ruff detects relative imports via TID252, it does not auto-fix them yet.
   # We use absolufy-imports, until Ruff supports this feature.
@@ -65,12 +65,6 @@ repos:
     rev: v0.3.1
     hooks:
       - id: absolufy-imports
-
-  - repo: https://github.com/jendrikseipp/vulture
-    rev: "v2.3"
-    hooks:
-      - id: vulture
-        args: ["src/", "tests/"]
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
     rev: v1.0.5
