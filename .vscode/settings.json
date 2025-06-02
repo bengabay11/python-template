@@ -20,6 +20,7 @@
 		"levelname",
 		"mypy",
 		"pycodestyle",
+		"Pydantic",
 		"pydocstyle",
 		"pyflakes",
 		"pyproject",

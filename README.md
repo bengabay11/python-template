@@ -12,12 +12,13 @@ We've bundled the following to get you up and running quickly:
 - **✅ Strict Type-Checking:** Enforces code quality with [mypy](https://www.mypy-lang.org/) for robust static type analysis, catching errors early.
 - **✨ Blazing-Fast Linting & Formatting:** Leverages [ruff](https://docs.astral.sh/ruff/) for an all-in-one, high-performance linter, code formatter, and more.
 - **🚫 Automated Quality Checks:** Integrates [pre-commit](https://pre-commit.com/) hooks for `ruff`, `mypy`, `codespell`, `absolufy-imports`, `uv lock`, and other essential checks, ensuring code consistency before commits.
-- **💻 VS Code Integration:** Includes `.vscode/` settings for streamlined development, with editor configurations and debug settings right out of the box.
-- **🤖 GitHub Actions Workflow:** Provides `.github/` workflows for automated `pre-commit` checks, unit, and integration testing (on windows/linux/mac).
-- **🔗 Git Attributes:** Standardizes `.gitattributes` for consistent line endings, optimized diffs, and common Git configurations tailored for Python projects.
-- **📁 Structured Source Directory:** A clear `src/` directory where your application code resides, complete with an example `main.py` to get you started.
+- **💻 VS Code Integration:** Includes [settings.json](.vscode/settings.json) and [launch.json](.vscode/launch.json) for streamlined development, with editor configurations and debug settings right out of the box.
+- **🤖 GitHub Actions Workflow:** Provides automated `pre-commit` checks, unit, and integration testing (on windows/linux/mac).
+- **🔗 Git Attributes:** Standardizes [.gitattributes](.gitattributes) for consistent line endings, optimized diffs, and common Git configurations tailored for Python projects.
+- **📁 Structured Source Directory:** A clear [src/](src/) directory where your application code resides, complete with an example [main.py](src/main.py) to get you started.
+- **⚙️ Flexible Settings System:** Includes a modern, sectioned configuration system powered by Pydantic, supporting TOML, .env, and environment variables, with auto-discovery and type-safe validation (see [settings.py](src/settings.py)).
 - **🌈 Enhanced Terminal Logging:** Configured with [colorlog](https://pypi.org/project/colorlog/) to provide highly readable, colored log output directly in your terminal, making debugging a breeze.
-- **📄 Standard Project Files:** Includes a `LICENSE` and this `README.md` for proper project documentation and licensing.
+- **📄 Standard Project Files:** Includes a [LICENSE](LICENSE) and this [README.md](README.md) for proper project documentation and licensing.
 
 ---
 
@@ -63,7 +64,7 @@ Before you begin, ensure you have:
    python main.py
    ```
 
-   Alternatively, you can use the pre-configured VS Code debug settings in [.vscode/launch.json](.vscode/launch.json) for a seamless debugging experience.
+   Alternatively, you can use the pre-configured VS Code debug settings in [launch.json](.vscode/launch.json) for a seamless debugging experience.
 
 ---
 
@@ -74,6 +75,56 @@ This template is designed to be flexible. Here's how you can tailor it to your n
 - **Add Your Modules:** Create and organize your application's modules within the `src/` directory.
 - **Manage Dependencies:** Update `pyproject.toml` to add or remove project dependencies and adjust metadata.
 - **Configure Tools:** Fine-tune `mypy.ini` and `ruff.toml` to align with your specific coding style and static analysis requirements.
+
+---
+
+## Settings
+
+This template features a modern configuration system using [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) (see [settings.py](src/settings.py)).
+
+- **Multi-source loading:** Settings are loaded in the following order of precedence:
+
+  1. Direct class initialization
+  2. TOML config file (e.g., [config/config.dev.toml](config/config.dev.toml))
+  3. environment variables (including `.env`).
+
+- **Sectioned & Nested:** Settings are organized into logical sections (e.g., `core`, `logging`) for clarity and scalability. Deeply nested environment variables are supported using the `SECTION__PROPERTY` naming convention (e.g., `CORE__APP_NAME`).
+- **Auto-discovery:** The config system can automatically find the first TOML file in your [config/](config) directory, making it easy to switch environments or configurations.
+- **Type-safe:** All settings are validated and parsed using Pydantic models, ensuring type safety and clear error messages.
+
+Example usage:
+
+```python
+from src.settings import settings
+print(settings.core.app_name)
+print(settings.logging.min_log_level)
+```
+
+---
+
+## Logging
+
+Logging is handled via a flexible, colorized, and extensible system (see [logging_setup.py](src/logging_setup.py)).
+
+- **Colorful output:** Uses [colorlog](https://pypi.org/project/colorlog/) for beautiful, readable terminal logs.
+- **Configurable handlers:** Supports both stream and file handlers, with easy configuration via settings.
+- **Validation:** Log level and handler configuration are validated using Pydantic, with clear error messages for misconfiguration.
+- **Extensible:** The handler system is built on an abstract base class, making it easy to add new handler types if needed.
+
+Example usage:
+
+```python
+from src.logging_setup import setup_logger, SetupLoggerParams, LoggerHandlerType
+from src.settings import settings
+
+setup_logger(
+    SetupLoggerParams(
+        level=settings.logging.min_log_level,
+        handler_types={LoggerHandlerType.STREAM},
+        file_path=settings.logging.log_file_path,
+    )
+)
+```
 
 ---
 
