@@ -5,10 +5,10 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Python Debugger: main.py",
+			"name": "Python Debugger: src.main",
 			"type": "debugpy",
 			"request": "launch",
-			"program": "${workspaceFolder}/src/main.py",
+			"module": "src.main",
 			"console": "integratedTerminal"
 		}
 	]
