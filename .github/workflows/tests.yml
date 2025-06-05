@@ -1,4 +1,4 @@
-name: Integration Tests
+name: Unit Tests
 on: [push]
 jobs:
   test:
@@ -26,4 +26,7 @@ jobs:
           uv pip install -r pyproject.toml --system --group dev
 
       - name: Run unit tests
+        run: pytest -vv tests/unit
+
+      - name: Run integration tests
         run: pytest -vv tests/integration

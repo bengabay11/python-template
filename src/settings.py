@@ -10,13 +10,27 @@ from pydantic_settings import (
 
 
 def find_first_toml(search_dir: Path, patterns: list[str] | None = None) -> Path:
-    """
-    Search for `toml` files in the given directory (optionally with `patterns`).
+    """Search for the first TOML file in the specified directory.
 
-    Returns the path of the first one found. Raises `FileNotFoundError` if none found.
+    Args:
+        search_dir (Path): The directory to search for TOML files.
+        patterns (list[str], optional): List of glob patterns to match files,
+        Defaults to ["*.toml"].
+
+    Returns:
+        Path: The path to the first TOML file found.
+
+    Raises:
+        `FileNotFoundError`: If the directory does not exist or no matching TOML file is found.
+
     """
     if patterns is None:
         patterns = ["*.toml"]
+
+    if not search_dir.exists():
+        msg = f"Config directory '{search_dir}' does not exist."
+        raise FileNotFoundError(msg)
+
     for pattern in patterns:
         for toml_path in search_dir.glob(pattern):
             if toml_path.is_file():

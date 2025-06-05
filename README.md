@@ -85,7 +85,7 @@ This template features a modern configuration system using [Pydantic Settings](h
 - **Multi-source loading:** Settings are loaded in the following order of precedence:
 
   1. Direct class initialization
-  2. TOML config file (e.g., [config/config.dev.toml](config/config.dev.toml))
+  2. TOML config file (e.g., [config/config.example.toml](config/config.example.toml))
   3. environment variables (including `.env`).
 
 - **Sectioned & Nested:** Settings are organized into logical sections (e.g., `core`, `logging`) for clarity and scalability. Deeply nested environment variables are supported using the `SECTION__PROPERTY` naming convention (e.g., `CORE__APP_NAME`).

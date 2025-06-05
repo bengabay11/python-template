@@ -7,10 +7,6 @@ from src.settings import settings
 logger = logging.getLogger(__name__)
 
 
-def add(first_num: int, second_num: int) -> int:
-    return first_num + second_num
-
-
 async def main() -> None:
     setup_logger(
         SetupLoggerParams(
@@ -21,7 +17,7 @@ async def main() -> None:
     )
     logger.info(f"Logging settings: {settings.logging}")
     logger.info(f"Starting the main function for {settings.core.app_name}")
-    print(f"Sum of 1 and 2 is: {add(1, 2)}")
+    print("Hello, World!")
 
 
 if __name__ == "__main__":

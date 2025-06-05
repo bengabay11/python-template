@@ -52,7 +52,6 @@ class SetupLoggerParams(BaseModel):
     @model_validator(mode="after")
     def validate_file_path(self) -> Self:
         uses_file_handler = LoggerHandlerType.FILE in self.handler_types
-
         if uses_file_handler and self.file_path is None:
             msg = (
                 "'file_path' must be provided when 'FILE' handler is specified  in `handler_types`."

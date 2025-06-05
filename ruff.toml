@@ -1,12 +1,12 @@
 lint.select = [
-    # Default rules
+    # Default Ruff rules
     'F',      # pyflakes
     'E',      # pycodestyle (check Python code against some of the style conventions in PEP 8)
-    # More basic rules
+    # Core linting rules
     "A",      # flake8-builtins (prevent using keywords that clobber python builtins)
     'I',      # isort (sort imports alphabetically and automatically separate into sections and by type)
     'UP',     # pyupgrade (upgrade syntax for newer versions of the language)
-
+    # Additional recommended rules (customize or remove as needed for your project)
     'ERA',    # eradicate (removes commented-out code)
     'TRY',    # TRY (prevent exception handling anti-patterns)
     'D',      # pydocstyle (checking compliance with Python docstring conventions)
