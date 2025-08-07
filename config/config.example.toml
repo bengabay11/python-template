@@ -1,7 +1,6 @@
 [core]
 app_name = "Python Template"
 environment = "Development"
-author = "Ben Gabay"
 
 [logging]
 min_log_level = "DEBUG"

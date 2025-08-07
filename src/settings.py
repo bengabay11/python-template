@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from pydantic_settings import (
     BaseSettings,
     PydanticBaseSettingsSource,
@@ -45,13 +45,16 @@ class LoggingSettings(BaseModel):
     min_log_level: str = "INFO"
     log_file_path: Path | None = None
 
+    model_config = ConfigDict(extra="forbid")
+
 
 class AppCoreSettings(BaseModel):
     """Core application settings."""
 
     app_name: str = "Python Template"
     environment: str = "Development"
-    author: str | None = None
+
+    model_config = ConfigDict(extra="forbid")
 
 
 class AppSettings(BaseSettings):
@@ -68,8 +71,8 @@ class AppSettings(BaseSettings):
     The delimiter defined in `model_config.env_nested_delimiter`
     """
 
-    core: AppCoreSettings = AppCoreSettings()
-    logging: LoggingSettings = LoggingSettings()
+    core: AppCoreSettings
+    logging: LoggingSettings
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -79,6 +82,7 @@ class AppSettings(BaseSettings):
         # For example: `CORE__APP_NAME`.
         env_nested_delimiter="__",
         toml_file=find_first_toml(Path(__file__).parent.parent / "config"),
+        extra="forbid",
     )
 
     @classmethod
@@ -94,4 +98,4 @@ class AppSettings(BaseSettings):
         return (init_settings, TomlConfigSettingsSource(settings_cls), env_settings)
 
 
-settings = AppSettings()
+settings = AppSettings()  # type: ignore[call-arg]
