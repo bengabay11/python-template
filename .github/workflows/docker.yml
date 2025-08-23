@@ -21,7 +21,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v5
         with:
-          push: ${{ github.event.pull_request.base.ref == 'master' }}
+          # push: ${{ github.event.pull_request.base.ref == 'master' }}
           tags: |
             ghcr.io/${{ github.repository }}:v${{ github.run_number }}
             ghcr.io/${{ github.repository }}:latest
