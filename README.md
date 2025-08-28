@@ -14,6 +14,8 @@ We've bundled the following to get you up and running quickly:
 - **🚫 Automated Quality Checks:** Integrates [pre-commit](https://pre-commit.com/) hooks for `ruff`, `mypy`, `codespell`, `absolufy-imports`, `uv lock`, and other essential checks, ensuring code consistency before commits.
 - **💻 VS Code Integration:** Includes [settings.json](.vscode/settings.json) and [launch.json](.vscode/launch.json) for streamlined development, with editor configurations and debug settings right out of the box.
 - **🤖 GitHub Actions Workflow:** Provides automated `pre-commit` checks, unit, and integration testing (on windows/linux/mac).
+- **🐳 Container Image Publishing:** Provides a ready-made `Dockerfile` and workflow that builds on every pull request
+  and publishes versioned GHCR images when the PR targets `master`.
 - **🔗 Git Attributes:** Standardizes [.gitattributes](.gitattributes) for consistent line endings, optimized diffs, and common Git configurations tailored for Python projects.
 - **📁 Structured Source Directory:** A clear [src/](src/) directory where your application code resides, complete with an example [main.py](src/main.py) to get you started.
 - **⚙️ Flexible Settings System:** Includes a modern, sectioned configuration system powered by Pydantic, supporting TOML, .env, and environment variables, with auto-discovery and type-safe validation (see [settings.py](src/settings.py)).
@@ -75,6 +77,24 @@ This template is designed to be flexible. Here's how you can tailor it to your n
 - **Add Your Modules:** Create and organize your application's modules within the `src/` directory.
 - **Manage Dependencies:** Update `pyproject.toml` to add or remove project dependencies and adjust metadata.
 - **Configure Tools:** Fine-tune `mypy.ini` and `ruff.toml` to align with your specific coding style and static analysis requirements.
+
+---
+
+## Docker Image
+
+Use the provided `Dockerfile` to containerize your application.
+The accompanying GitHub Actions workflow builds this image for every pull request.
+If the pull request targets `master`, it also publishes the image to [GHCR](https://github.com/features/packages).
+
+- Master pull requests publish tags `latest` and `v<run_number>` (for example, `v1`).
+- Images are stored under your repository's namespace, such as `ghcr.io/<OWNER>/<REPO>`.
+
+To build and run the image locally:
+
+```sh
+docker build -t ghcr.io/OWNER/REPO:local .
+docker run --rm ghcr.io/OWNER/REPO:local
+```
 
 ---
 
