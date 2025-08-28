@@ -2,6 +2,10 @@ name: Build and publish Docker image
 
 on:
   pull_request:
+  push:
+    branches:
+      - master
+      - main
 
 jobs:
   build:
@@ -12,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Log in to GitHub Container Registry
-        if: github.event.pull_request.base.ref == 'master'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -21,7 +24,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v5
         with:
-          # push: ${{ github.event.pull_request.base.ref == 'master' }}
+          push: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'master') }}
           tags: |
             ghcr.io/${{ github.repository }}:v${{ github.run_number }}
             ghcr.io/${{ github.repository }}:latest
