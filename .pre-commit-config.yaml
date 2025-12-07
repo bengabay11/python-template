@@ -70,3 +70,8 @@ repos:
     hooks:
       - id: python-bandit-vulnerability-check
         args: [--quiet, --skip, "B101", --recursive, src]
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.4
+    hooks:
+      - id: actionlint
