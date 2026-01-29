@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 
 [[package]]
@@ -366,6 +366,7 @@ dependencies = [
     { name = "colorlog" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
+    { name = "python-dotenv" },
 ]
 
 [package.dev-dependencies]
@@ -386,6 +387,7 @@ requires-dist = [
     { name = "colorlog", specifier = ">=6.9.0" },
     { name = "pydantic", specifier = ">=2.11.5" },
     { name = "pydantic-settings", specifier = ">=2.9.1" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
 ]
 
 [package.metadata.requires-dev]
