@@ -40,8 +40,6 @@ def find_first_toml(search_dir: Path, patterns: list[str] | None = None) -> Path
 
 
 class LoggingSettings(BaseModel):
-    """Logging-related settings."""
-
     min_log_level: str = "INFO"
     log_file_path: Path | None = None
 
@@ -49,8 +47,6 @@ class LoggingSettings(BaseModel):
 
 
 class AppCoreSettings(BaseModel):
-    """Core application settings."""
-
     app_name: str = "Python Template"
     environment: str = "Development"
 
