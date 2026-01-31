@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 async def main() -> None:
     load_dotenv()
-    settings = AppSettings()  # type: ignore[call-arg]
+    settings = AppSettings()
     setup_logger(
         SetupLoggerParams(
             level=settings.logging.min_log_level,
