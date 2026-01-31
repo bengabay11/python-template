@@ -8,6 +8,9 @@ from pydantic_settings import (
     TomlConfigSettingsSource,
 )
 
+ROOT_DIR = Path(__file__).parent.parent
+DEFAULT_CONFIG_DIR = ROOT_DIR / "config"
+
 
 def find_first_toml(search_dir: Path, patterns: list[str] | None = None) -> Path:
     """Search for the first TOML file in the specified directory.
@@ -71,13 +74,10 @@ class AppSettings(BaseSettings):
     logging: LoggingSettings
 
     model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
         # Important for deeply nested env vars.
         # Properties should be named as `{SECTION}__{PROPERTY}` in `.env`.
         # For example: `CORE__APP_NAME`.
         env_nested_delimiter="__",
-        toml_file=find_first_toml(Path(__file__).parent.parent / "config"),
         extra="forbid",
     )
 
@@ -90,5 +90,11 @@ class AppSettings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,  # noqa: ARG003
         file_secret_settings: PydanticBaseSettingsSource,  # noqa: ARG003
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        # Customize the order of settings sources.(init > toml > env)
-        return (init_settings, TomlConfigSettingsSource(settings_cls), env_settings)
+        toml_file = find_first_toml(DEFAULT_CONFIG_DIR)
+
+        # Customize the order of settings sources (init > toml > env)
+        return (
+            init_settings,
+            env_settings,
+            TomlConfigSettingsSource(settings_cls, toml_file=toml_file),
+        )

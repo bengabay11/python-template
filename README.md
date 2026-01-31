@@ -38,14 +38,16 @@ Before you begin, ensure you have:
 ### Usage
 
 1. **Clone the Template:**
-   Clone this repository and rename the project directory to your desired project name:
-
-2. **Install Dependencies:**
-   Initialize a virtual environment and install all project dependencies using `uv`:
 
    ```sh
-   uv venv
-   uv pip install -r pyproject.toml
+   git clone https://github.com/bengabay11/python-template.git
+   ```
+
+2. **Setup virtual environment:**
+   Automatically download the correct Python version, create a virtual environment (`.venv`), and install all dependencies using `uv`:
+
+   ```sh
+   uv sync
    ```
 
 3. **Install Pre-Commit Hooks:**
@@ -58,11 +60,17 @@ Before you begin, ensure you have:
 4. **Start Developing:**
    Begin building your awesome Python project within the `src/` directory.
 
-5. **Run the Example Script:**
-   Test your setup by running the included example:
+5. **Running:**
+   Test your setup by running the entry point:
 
    ```sh
    python -m src.main
+   ```
+
+   Or running the same file using uv:
+
+   ```sh
+   uv run -m src.main
    ```
 
    Alternatively, you can use the pre-configured VS Code debug settings in [launch.json](.vscode/launch.json) for a seamless debugging experience.
@@ -102,6 +110,7 @@ docker run --rm ghcr.io/OWNER/REPO:local
 This template features a modern configuration system using [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) (see [settings.py](src/settings.py)).
 
 - **Multi-source loading:** Settings are loaded in the following order of precedence:
+
   1. Direct class initialization
   2. TOML config file (e.g., [config/config.example.toml](config/config.example.toml))
   3. environment variables (including `.env`).
