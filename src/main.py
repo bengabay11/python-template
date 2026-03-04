@@ -17,11 +17,10 @@ async def main() -> None:
             level=settings.logging.min_log_level,
             handler_types={LoggerHandlerType.STREAM, LoggerHandlerType.FILE},
             file_path=settings.logging.log_file_path,
-        )
+        ),
     )
-    logger.info(f"Logging settings: {settings.logging}")
-    logger.info(f"Starting the main function for {settings.core.app_name}")
-    print("Hello, World!")
+    logger.info("Logging settings: %s", settings.logging)
+    logger.info("Starting the main function for %s", settings.core.app_name)
 
 
 if __name__ == "__main__":
