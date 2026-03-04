@@ -3,7 +3,7 @@ name = "python-template"
 version = "0.1.0"
 description = "A boilerplate template to kickstart new Python projects."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "colorlog>=6.9.0",
     "pydantic>=2.11.5",
