@@ -1,12 +1,13 @@
-lint.select = [
-    # Default Ruff rules
+line-length = 100
+
+[lint]
+select = [
     'F',      # pyflakes
     'E',      # pycodestyle (check Python code against some of the style conventions in PEP 8)
-    # Core linting rules
+    'W',      # pycodestyle warnings (PEP 8)
     "A",      # flake8-builtins (prevent using keywords that clobber python builtins)
     'I',      # isort (sort imports alphabetically and automatically separate into sections and by type)
     'UP',     # pyupgrade (upgrade syntax for newer versions of the language)
-    # Additional recommended rules (customize or remove as needed for your project)
     'ERA',    # eradicate (removes commented-out code)
     'TRY',    # TRY (prevent exception handling anti-patterns)
     'D',      # pydocstyle (checking compliance with Python docstring conventions)
@@ -22,17 +23,35 @@ lint.select = [
     'Q',      # flake8-quotes (checks for consistent use of quotes)
     'RSE',    # flake8-raise (finds improvements for raise statements)
     'N',      # flake8-naming (enforce naming conventions)
+    'ASYNC',  # flake8-async (essential for AI SDKs/FastAPI)
+    'DTZ',    # flake8-datetimez (prevents timezone-naive datetimes)
+    'ISC',    # flake8-implicit-str-concat (catches "hello" "world" mistakes)
+    'G',      # flake8-logging-format (prevents expensive string formatting in logs)
+    'RET',    # flake8-return (checks return statements)
+    'TCH',    # flake8-type-checking (manages type-only imports)
+    'C90',    # mccabe (complexity checker)
+    'COM',    # flake8-commas (enforces trailing commas)
+    'SLOT',   # flake8-slots (optimizes class memory)
+    'FLY',    # flynt (converts to f-strings)
+    'ICN',    # flake8-import-conventions (standardizes aliases)
+    'FA',     # flake8-future-annotations (ensures 'from __future__ import annotations')
+    'TID',    # flake8-tidy-imports (bans relative imports / specific modules)
+    'T10',    # flake8-debugger (prevents 'breakpoint()' from being committed)
+    'INP',    # flake8-no-pep420 (enforces __init__.py in packages)
+    'PYI',    # flake8-pyi (linting for type stubs)
+    'PERF',   # perflint (performance optimization)
+    'FBT',    # flake8-boolean-trap (readable function calls)
+    # 'ANN',    # flake8-annotations (enforces type hints)
+    # 'S',      # flake8-bandit (security checks: finds hardcoded passwords, unsafe eval, etc.)
+    # 'T20',    # flake8-print (forbids print statements in production)
 ]
-lint.ignore = [
-    "D100",  # Missing docstring in public module
-    "D101",  # Missing docstring in public class
-    "D102",  # Missing docstring in public method
-    "D103",  # Missing docstring in public function
-    "D104",  # Missing docstring in public packageRuffD104
-    "D203",  # incorrect-blank-line-before-class
-    "D205",  # missing-blank-line-after-summary
-    "D211",  # no-blank-line-before-class
-    "D212",  # multi-line-summary-first-line
-    "D213",  # multi-line-summary-second-line
+ignore = [
+    "D1",     # pydocstyle: missing docstrings
+    "COM812", # Trailing comma missing (conflicts with formatter)
 ]
-line-length = 100
+
+[lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[lint.pydocstyle]
+convention = "google"

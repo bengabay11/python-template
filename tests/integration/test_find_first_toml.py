@@ -18,7 +18,9 @@ def test_find_first_toml_dir_not_exists() -> None:
     ],
 )
 def test_find_first_toml_no_toml_files(
-    search_dir: Path, patterns: list[str], tmp_path_factory: pytest.TempPathFactory
+    search_dir: Path,
+    patterns: list[str],
+    tmp_path_factory: pytest.TempPathFactory,
 ) -> None:
     if not search_dir.exists():
         search_dir = tmp_path_factory.mktemp(search_dir.name)
