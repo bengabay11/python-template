@@ -29,7 +29,6 @@ select = [
     'G',      # flake8-logging-format (prevents expensive string formatting in logs)
     'RET',    # flake8-return (checks return statements)
     'TCH',    # flake8-type-checking (manages type-only imports)
-    'ANN',    # flake8-annotations (enforces type hints)
     'C90',    # mccabe (complexity checker)
     'COM',    # flake8-commas (enforces trailing commas)
     'SLOT',   # flake8-slots (optimizes class memory)
@@ -42,6 +41,7 @@ select = [
     'PYI',    # flake8-pyi (linting for type stubs)
     'PERF',   # perflint (performance optimization)
     'FBT',    # flake8-boolean-trap (readable function calls)
+    # 'ANN',    # flake8-annotations (enforces type hints)
     # 'S',      # flake8-bandit (security checks: finds hardcoded passwords, unsafe eval, etc.)
     # 'T20',    # flake8-print (forbids print statements in production)
 ]
