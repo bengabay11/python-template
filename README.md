@@ -56,7 +56,7 @@ Before you begin, ensure you have:
    ```sh
    # On Linux/macOS
    source .venv/bin/activate
-   
+
    # On Windows
    .venv\Scripts\activate
    ```
