@@ -50,17 +50,28 @@ Before you begin, ensure you have:
    uv sync
    ```
 
-3. **Install Pre-Commit Hooks:**
+3. **Activate Virtual Environment:**
+   Source the virtual environment created by `uv`:
+
+   ```sh
+   # On Linux/macOS
+   source .venv/bin/activate
+   
+   # On Windows
+   .venv\Scripts\activate
+   ```
+
+4. **Install Pre-Commit Hooks:**
    Set up the pre-commit hooks to automate code quality checks before each commit:
 
    ```sh
    pre-commit install
    ```
 
-4. **Start Developing:**
+5. **Start Developing:**
    Begin building your awesome Python project within the `src/` directory.
 
-5. **Running:**
+6. **Running:**
    Test your setup by running the entry point:
 
    ```sh
