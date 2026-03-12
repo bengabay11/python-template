@@ -55,6 +55,7 @@ select = [
 ignore = [
     'D1',     # pydocstyle: missing docstrings
     'COM812', # Trailing comma missing (conflicts with formatter)
+    'COM819', # Trailing comma prohibited (conflicts with formatter)
 ]
 
 [lint.per-file-ignores]
