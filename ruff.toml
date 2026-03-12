@@ -5,7 +5,7 @@ select = [
     'F',      # pyflakes
     'E',      # pycodestyle (check Python code against some of the style conventions in PEP 8)
     'W',      # pycodestyle warnings (PEP 8)
-    "A",      # flake8-builtins (prevent using keywords that clobber python builtins)
+    'A',      # flake8-builtins (prevent using keywords that clobber python builtins)
     'I',      # isort (sort imports alphabetically and automatically separate into sections and by type)
     'UP',     # pyupgrade (upgrade syntax for newer versions of the language)
     'ERA',    # eradicate (removes commented-out code)
@@ -41,17 +41,24 @@ select = [
     'PYI',    # flake8-pyi (linting for type stubs)
     'PERF',   # perflint (performance optimization)
     'FBT',    # flake8-boolean-trap (readable function calls)
+    'PL',     # pylint (comprehensive Python linting)
+    'FURB',   # refurb (modernization suggestions)
+    'PTH',    # flake8-use-pathlib (prefer pathlib over os.path)
+    'BLE',    # flake8-blind-except (prevents bare except statements)
+    'PGH',    # pygrep-hooks (miscellaneous lints using regex)
+    'SLF',    # flake8-self (prevents private member access)
+    'EXE',    # flake8-executable (checks executable file permissions)
     # 'ANN',    # flake8-annotations (enforces type hints)
     # 'S',      # flake8-bandit (security checks: finds hardcoded passwords, unsafe eval, etc.)
-    # 'T20',    # flake8-print (forbids print statements in production)
+    'T20',    # flake8-print (forbids print statements in production)
 ]
 ignore = [
-    "D1",     # pydocstyle: missing docstrings
-    "COM812", # Trailing comma missing (conflicts with formatter)
+    'D1',     # pydocstyle: missing docstrings
+    'COM812', # Trailing comma missing (conflicts with formatter)
 ]
 
 [lint.per-file-ignores]
-"tests/**/*.py" = ["S101"]
+'tests/**/*.py' = ['S101']
 
 [lint.pydocstyle]
-convention = "google"
+convention = 'google'
