@@ -1,0 +1,118 @@
+# Version Control
+.git/
+.gitattributes
+.gitignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# Development Tools
+.pre-commit-config.yaml
+.editorconfig
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python Cache and Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing
+tests/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.hypothesis/
+*.cover
+*.py,cover
+nosetests.xml
+coverage.xml
+
+# Type Checking and Linting
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Documentation
+docs/
+*.md
+LICENSE
+README*
+
+# Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints
+
+# Logs and Databases
+*.log
+*.sqlite
+*.db
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Dependency Management (keep if you need lock files for reproducibility)
+# Uncomment these if you install from pyproject.toml directly:
+# poetry.lock
+# uv.lock
+# pdm.lock
+# Pipfile.lock
+
+# Local Configuration
+config/*.local.*
+.env.local
+.env.*.local
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# OS Files
+Thumbs.db
+.DS_Store
