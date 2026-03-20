@@ -11,7 +11,7 @@ We've bundled the following to get you up and running quickly:
 - **⚡️ Speedy Package Management:** Utilizes [uv](https://docs.astral.sh/uv/) for incredibly fast dependency resolution and package installation.
 - **✅ Strict Type-Checking:** Enforces code quality with [mypy](https://www.mypy-lang.org/) for robust static type analysis, catching errors early.
 - **✨ Blazing-Fast Linting & Formatting:** Leverages [ruff](https://docs.astral.sh/ruff/) for an all-in-one, high-performance linter, code formatter, and more.
-- **🚫 Automated Quality Checks:** Integrates [pre-commit](https://pre-commit.com/) hooks for `ruff`, `mypy`, `codespell`, `absolufy-imports`, `uv lock`, and other essential checks, ensuring code consistency before commits.
+- **🚫 Automated Quality Checks:** Integrates [pre-commit](https://pre-commit.com/) hooks for `ruff`, `mypy`, `codespell`, `absolufy-imports`, `uv lock`, `detect-private-key`, and other essential checks, ensuring code consistency before commits.
 - **💻 VS Code Integration:** Includes [settings.json](.vscode/settings.json) and [launch.json](.vscode/launch.json) for streamlined development, with editor configurations and debug settings right out of the box.
 - **🤖 GitHub Actions Workflow:** Provides automated `pre-commit` checks, unit, and integration testing (on windows/linux/mac).
 - **🐳 Container Image Publishing:** Provides a ready-made `Dockerfile` and workflow that builds on every pull request
